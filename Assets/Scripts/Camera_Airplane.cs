@@ -3,20 +3,20 @@ using UnityEngine;
 public class NewMonoBehaviourScript : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-
-    [SerializeField] Rigidbody rb;
-    [SerializeField] float enginePower = 20f;
-    [SerializeField] float liftBooster = 0.5f;
-    [SerializeField] float drag = 0.001f;
-    [SerializeField] float angularDrag = 0.0001f;
+    [SerializeField] Transform target;
+    [SerializeField] float smoothSpeed = 2f;
+    [SerializeField] Vector3 offset = new Vector3(0, 2, -5);
+    
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        
+        Vector3 desiredPosition = target.position + target.TransformDirection(offset);
+        transform.position = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
+        transform.LookAt(target);
     }
 }

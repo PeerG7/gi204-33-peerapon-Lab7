@@ -826,8 +826,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   enginePower: 50
   liftBooster: 0.5
-  drag: 0.001
-  angularDrag: 0.001
+  drag: 0.01
+  angularDrag: 0.05
   yawPower: 50
   pitchPower: 50
   rollPower: 30
